@@ -1,88 +1,118 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <!-- Include CSS -->
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
-      integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS"
-      crossorigin="anonymous"
-    />
-    <!-- Include Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  </head>
+<html lang="zh-TW">
 
-  <body>
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <div id="myApp">
-            <button class="btn btn-primary" v-on:click="ajaxFunc">A Jax!</button>
-            <br />
-            <table v-if="users.length > 0" class="table table-striped">
-              <thead>
-                <tr>
-                  <th>Username</th>
-                  <th>Phone</th>
-                  <th>Email</th>
-                  <th>Website</th>
-                </tr>
-              </thead>
-              <!--使用v-for跑迴圈-->
-              <tr v-for="(user , index) in users">
-                <td>{{user.username}}</td>
-                <td>{{user.phone}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.website}}</td>
-              </tr>
-            </table>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <!-- Include CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+    integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <!-- icon -->
+    <a class="navbar-brand" href="#">
+      <img class="nav-logo" src="/img/nav-logo.png" alt="avatar" onmousedown="return false;">
+    </a>
+    <!-- hamburger button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- nav items -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            關於顆顆
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">車輛介紹</a>
+            <a class="dropdown-item" href="#">顆顆願景</a>
+            <a class="dropdown-item" href="#">服務條款</a>
           </div>
-        </div>
-      </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">訂票系統</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            會員專區
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">會員登入</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">里程優惠</a>
+            <a class="dropdown-item" href="#">常用路線</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            聯絡我們
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">聯絡各站</a>
+            <a class="dropdown-item" href="#">意見回饋</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">人才招募</a>
+          </div>
+        </li>
+      </ul>
     </div>
-  </body>
+  </nav>
+</body>
 
-  <footer>
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script
-      src="https://code.jquery.com/jquery-3.3.1.min.js"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
-      integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
-      integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
-      crossorigin="anonymous"
-    ></script>
-    <!-- 引用Vue.js -->
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.21/dist/vue.js"></script>
-    <script>
-      var vue = new Vue({
-        el: "#myApp",
-        data: {
-          users: []
-        },
-        methods: {
-          ajaxFunc: function() {
-            $.ajax({
-              url: "/users",
-              method: "get",
-              dataType: "json",
-              success: function(users) {
-                vue.users = users;
-              }
-            });
+<footer>
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+    integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+    integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k"
+    crossorigin="anonymous"></script>
+  <!-- 引用Vue.js -->
+  <!--開發版本-->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <!--生產版本-->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+  <script>
+    // show dropdown by hover
+    const $dropdown = $(".dropdown");
+    const $dropdownToggle = $(".dropdown-toggle");
+    const $dropdownMenu = $(".dropdown-menu");
+    const showClass = "show";
+
+    $(window).on("load resize", function () {
+      if (this.matchMedia("(min-width: 768px)").matches) {
+        $dropdown.hover(
+          function () {
+            const $this = $(this);
+            $this.addClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "true");
+            $this.find($dropdownMenu).addClass(showClass);
+          },
+          function () {
+            const $this = $(this);
+            $this.removeClass(showClass);
+            $this.find($dropdownToggle).attr("aria-expanded", "false");
+            $this.find($dropdownMenu).removeClass(showClass);
           }
-        }
-      });
-    </script>
-  </footer>
+        );
+      } else {
+        $dropdown.off("mouseenter mouseleave");
+      }
+    });
+    //
+  </script>
+
+</footer>
+
 </html>
