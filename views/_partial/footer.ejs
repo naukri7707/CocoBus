@@ -1,3 +1,43 @@
+<% 
+/**
+ * @param {String} INC  公司名稱，顯示在 Copyright
+ */
+const INC = "COCO";
+
+/**
+ * @param {String} title         項目標題
+ * @param {Array}  content       子項陣列
+ * @param {String} content.text  子項文字
+ * @param {String} content.link  子項連結 (此項為可選項，若不填寫則會以普通文字顯示)
+ */
+const left = {
+  title: "顆顆客運",
+  content: [
+    { text:"CoCo Official Web"}
+  ]
+}
+
+const middle = {
+  title: "Follow",
+  content: [
+    { text:"CoCo Official", link:"#" },
+    { text:"Facebook", link:"#" },
+    { text:"Instagram", link:"#" },
+    { text:"LINE@", link:"#" },
+  ]
+};
+
+const right = {
+  title: "Where to find us",
+  content: [
+    { text:"MAIL：cocoofficial", link:"mailto:cocoofficial@gmail.com" },
+    { text:"Address：404台中市北區三民路三段129號" },
+    { text:"Telephone：(04)-7654321" },
+    { text:"Fax：(04)-1234567" },
+  ]
+};
+%>
+
 <footer class="page-footer font-small blue">
   <footer class="page-footer font-small blue pt-4">
     <!-- links -->
@@ -5,63 +45,74 @@
       <div class="row">
         <div class="col-md-6 mt-md-0 mt-3">
           <!-- Content -->
-          <h5 class="text-uppercase">顆顆客運</h5>
-          <p>
-            CoCo Official Web
-          </p>
+          <h3 class="text-uppercase"><%- left.title %></h3>
+          <ul class="list-unstyled">
+            <% for (const item of left.content ) { %>
+            <li>
+              <% if(item.link) { %>
+              <p>
+                <a href="<%- item.link %>">
+                  <%- item.text %>
+                </a>
+              </p>
+              <% } else { %>
+              <p>
+                <%- item.text %>
+              </p>
+              <% } %>
+            </li>
+            <% } %>
+          </ul>
         </div>
         <hr class="clearfix w-100 d-md-none pb-3" />
 
         <div class="col-md-3 mb-md-0 mb-3">
-          <h5 class="text-uppercase">Follow</h5>
-
+          <h4 class="text-uppercase"><%- middle.title %></h4>
           <ul class="list-unstyled">
+            <% for (const item of middle.content ) { %>
             <li>
-              <p></p>
+              <% if(item.link) { %>
+              <p>
+                <a href="<%- item.link %>">
+                  <%- item.text %>
+                </a>
+              </p>
+              <% } else { %>
+              <p>
+                <%- item.text %>
+              </p>
+              <% } %>
             </li>
-            <li>
-              <p><a href="#!">CoCo Official</a></p>
-            </li>
-            <li>
-              <p><a href="#!">Facebook</a></p>
-            </li>
-            <li>
-              <p><a href="#!">Instagram</a></p>
-            </li>
-            <li>
-              <p><a href="#!">LINE@</a></p>
-            </li>
-
+            <% } %>
           </ul>
         </div>
+
         <div class="col-md-3 mb-md-0 mb-3">
-          <!-- Links -->
-          <h5 class="text-uppercase">Where to find us</h5>
-
+          <h4 class="text-uppercase"><%- right.title %></h4>
           <ul class="list-unstyled">
+            <% for (const item of right.content ) { %>
             <li>
-              <p></p>
+              <% if(item.link) { %>
+              <p>
+                <a href="<%- item.link %>">
+                  <%- item.text %>
+                </a>
+              </p>
+              <% } else { %>
+              <p>
+                <%- item.text %>
+              </p>
+              <% } %>
             </li>
-            <li>
-              <p><a href="mailto:cocoofficial@gmail.com">MAIL：cocoofficial</a></p>
-            </li>
-            <li>
-              <p>Address：404台中市北區三民路三段129號</p>
-            </li>
-            <li>
-              <p href="#!">Telephone：(04)-7654321</p>
-            </li>
-            <li>
-              <p href="#!">Fax：(04)-1234567</p>
-            </li>
-
+            <% } %>
           </ul>
         </div>
+
       </div>
     </div>
     <!-- copyright -->
     <div class="footer-copyright text-center py-3">
-      Copyright © 2019 COCO All rights reserved.
+      Copyright © <%= copyrightYear() %> <%- INC %> All rights reserved.
       <a href="https://mdbootstrap.com/education/bootstrap/">
       </a>
     </div>

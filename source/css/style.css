@@ -1,9 +1,7 @@
-body{
+body {
   font-family: Microsoft JhengHei;
-  color:#4f3224;
-
+  color: #4f3224;
 }
-
 
 .navbar .nav-item:not(:last-child) {
   margin-right: 35px;
@@ -30,7 +28,7 @@ body{
 }
 
 .bg-light {
-  background-color: #4f3224!important;
+  background-color: #4f3224 !important;
 }
 .navbar-light .navbar-nav .nav-link {
   color: #ffffff;
@@ -42,20 +40,20 @@ body{
 .dropdown-item {
   font-size: 20px;
 }
-#navbar [aria-expanded = "true"]{
-  color:#ffb74c !important;
+#navbar [aria-expanded="true"] {
+  color: #ffb74c !important;
 }
-#navbar [aria-expanded = "false"]{
-  color:white !important;
+#navbar [aria-expanded="false"] {
+  color: white !important;
 }
-footer{
+footer {
   color: white;
   background-color: #4f3224;
 }
-footer a{
+footer a {
   color: white;
 }
-footer a:hover{
+footer a:hover {
   color: #ffb74c;
   text-decoration: none;
 }
@@ -72,6 +70,6 @@ footer a:hover{
   -o-border-radius: 50%;
 }*/
 
-.carousel-indicators li{
+.carousel-indicators li {
   background-color: black;
 }
