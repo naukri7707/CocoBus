@@ -14,11 +14,15 @@
     <% } %>
   </main>
   <%- include('_partial/footer'); %>
-  <% if (typeof scripts == 'object' && scripts) { %>
-  <%- include('_partial/foot', { scripts: scripts }); %>
-  <% } else {%>
+  <%# scripts %>
   <%- include('_partial/foot'); %>
+  <%- include('_script/layout'); %>
+  <% if (typeof scripts == 'object' && scripts) { %>
+  <% for (const script of scripts) { %>
+  <%- include(script); %>
+  <% } %>
   <% } %>
 </body>
+
 
 </html>

@@ -1,5 +1,20 @@
 <% 
-// 如果 drop === undefine (沒有)，dropList 會自己轉成 button
+/**
+ * @param {String} img  圖片路徑
+ * @param {String} link 連結路徑
+ */
+const icon = {
+  img: "/img/logogo.png",
+  link: "../"
+}
+/**
+ * @param {String} text 標題
+ * @param {String} link 主項連結
+ * @param {Array}  drop 下拉選單 (可選，若無則會將 dropdownList 轉成 button)
+ * @param {String} drop.text 子項名稱 (如果為 "---" 則會改為產生分隔線)
+ * @param {String} drop.link 子項連結
+ */
+// 如果 drop === undefine (沒有)，
 const navItems = [
   {
     text : "關於顆顆", link : "#",
@@ -13,15 +28,6 @@ const navItems = [
     text : "訂票系統", link : "/ticket"
   },
   {
-    text : "會員專區", link : "#",
-    drop: [
-      {text : "會員資料", link : "/user/data"},
-      {text : "里程優惠", link : "/user/mileage"},
-      {text : "常用路線", link : "/user/common"},
-      {text : "偏好設定", link : "/user/setting"},
-    ] 
-  },
-  {
     text : "聯絡我們", link : "#",
     drop: [
       {text : "聯絡各站", link : "/contact/location"},
@@ -30,15 +36,37 @@ const navItems = [
     ] 
   },
 ]; 
+
+const user = {};
+if(userdata) {
+  user.text = userdata.nickname;
+  user.link = "#";
+  user.drop = [
+    {text : "會員資料", link : "/user/data"},
+    {text : "里程優惠", link : "/user/mileage"},
+    {text : "常用路線", link : "/user/common"},
+    {text : "偏好設定", link : "/user/setting"},
+    {text : "---"},
+    {text : "登出", link : "/user/logout"},
+  ]
+} else {
+  user.text = "登入";
+  user.link = "/user/login";
+}
 %>
 
 <nav id="navbar" class="navbar navbar-expand-lg navbar-light bg-light">
   <!-- icon -->
-  <a class="navbar-brand" href="../">
-    <img class="nav-logo" src="/img/logogo.png" alt="avatar" onmousedown="return false;">
+  <a class="navbar-brand" href="<%- icon.link %>">
+    <img class="nav-logo" src="<%- icon.img %>" alt="avatar" onmousedown="return false;">
   </a>
-  <!-- nav items -->
+  <!-- hamburger button (要在最上面才不會被擠下去)-->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <!-- nav items -->
     <ul class="navbar-nav mr-auto">
       <% for (const item of navItems) {  %>
       <% if(item.drop) { %>
@@ -49,9 +77,13 @@ const navItems = [
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <% for (const drop of item.drop) { %>
+          <% if(drop.text === "---") { %>
+          <div class="dropdown-divider"></div>
+          <% } else { %>
           <a class="dropdown-item" href="<%- drop.link %>">
             <%- drop.text %>
           </a>
+          <% } %>
           <% } %>
         </div>
       </li>
@@ -64,10 +96,33 @@ const navItems = [
       <% } %>
       <% } %>
     </ul>
+    <!-- User -->
+    <ul class="navbar-nav navbar-right">
+      <% if(user.drop) { %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<%- user.link %>" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%- user.text %>
+        </a>
+        <div class="dropdown-menu user-dropdown" aria-labelledby="navbarDropdown">
+          <% for (const drop of user.drop) { %>
+          <% if(drop.text === "---") { %>
+          <div class="dropdown-divider"></div>
+          <% } else { %>
+          <a class="dropdown-item" href="<%- drop.link %>">
+            <%- drop.text %>
+          </a>
+          <% } %>
+          <% } %>
+        </div>
+      </li>
+      <% } else {%>
+      <li class="nav-item">
+        <a class="nav-link" href="<%- user.link %>">
+          <%- user.text %>
+        </a>
+      </li>
+      <% } %>
+    </ul>
   </div>
-  <!-- hamburger button -->
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 </nav>

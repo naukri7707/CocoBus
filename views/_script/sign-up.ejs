@@ -1,0 +1,37 @@
+<script>
+  const $username = $('#username');
+  const $password = $('#password');
+  const $checkPassword = $('#checkPassword');
+  const $nickname = $('#nickname');
+  const $cellphone = $('#cellphone');
+  const $email = $('#email');
+
+  function signup() {
+    if (password != checkPassword) {
+      assert.log("兩次輸入的密碼不相同")
+    } else {
+      $.post(
+        "/user/sign-up",
+        {
+          username: $username.val(),
+          password: $password.val(),
+          nickname: $nickname.val(),
+          cellphone: $cellphone.val(),
+          email: $email.val()
+        },
+        (res) => {
+          if (res.code <= 0) {
+            alert(res.msg);
+            if (res.code === 0) {
+              window.location.href = "/";
+            } else if (res.code === -2) {
+              window.location.href = "login";
+            }
+          } else {
+            alert("奇怪的錯誤，請聯繫管理員\n" + res.msg + "\nError Code:" + res.data.code);
+          }
+        }
+      );
+    }
+  }
+</script>

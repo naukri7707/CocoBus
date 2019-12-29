@@ -1,5 +1,7 @@
 // import
 const express = require('express');
+const bodyParser = require('body-parser');
+const session = require('express-session');
 const indexRouter = require('./routers/index');
 const aboutRouter = require('./routers/about');
 const ticketRouter = require('./routers/ticket');
@@ -8,9 +10,22 @@ const contactRouter = require('./routers/contact');
 
 // const
 const app = express();
+const SECRET_KEY = "secret"
+const EXPIRES = 14 * 24 * 60 * 60 * 1000
 
 // initial
 app.use(express.static(__dirname + '/source'));
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json());
+app.use(session({
+    secret: SECRET_KEY,
+    cookie: { maxAge: EXPIRES }
+}))
+// ejs 全域變數
+app.use(function (req, res, next) {
+    app.locals.userdata = req.session.userdata;
+    next();
+});
 // routers
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
@@ -25,5 +40,6 @@ app.set('view engine', 'ejs');
 app.locals.js = (path) => { return '<script src="' + path + '"></script>' }
 app.locals.css = (path) => { return '<link rel="stylesheet" href="' + path + '">' }
 app.locals.copyrightYear = () => { return new Date().getFullYear(); };
+
 
 const server = app.listen(8080);

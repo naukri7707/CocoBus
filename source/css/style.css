@@ -1,6 +1,36 @@
+:root {
+  --bg-color: #f3d493;
+  --dropdown-bg-color: #f3d493;
+  --dropdown-bg-color-hover: #e9ecef;
+}
+
 body {
   font-family: Microsoft JhengHei;
   color: #4f3224;
+  background-color: var(--bg-color);
+}
+
+#main {
+  min-height: 1000px;
+}
+
+.navbar .dropdown-menu {
+  background-color: var(--dropdown-bg-color);
+}
+.navbar .dropdown-menu .dropdown-item {
+  background-color: var(--dropdown-bg-color);
+}
+.navbar .dropdown-menu .dropdown-item:hover {
+  background-color: var(--dropdown-bg-color-hover);
+}
+
+.navbar .dropdown-menu .dropdown-divider {
+  border-top: 1px solid #1d2125;
+}
+
+.navbar .user-dropdown {
+  left: auto;
+  right: 0;
 }
 
 .navbar .nav-item:not(:last-child) {
