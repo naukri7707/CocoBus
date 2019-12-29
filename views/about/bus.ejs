@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-12">
+    <% for(const [i, item] of data.entries()) { %>
+    <% if(i > 0) {%>
+    <hr>
+    <% } %>
+    <div>
+      <h1><%- item.number %></h1>
+      <img src="<%- item.img %>">
+      <h3><%- item.from %> - <%- item.to %></h3>
+      <h3><%- item.startTime %> - <%- item.endTime %></h3>
+      <h4>約每<%- item.interval %>分鐘一班</h4>
+    </div>
+    <% } %>
+  </div>
+</div>

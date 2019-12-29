@@ -1,0 +1,73 @@
+<% 
+// 如果 drop === undefine (沒有)，dropList 會自己轉成 button
+const navItems = [
+  {
+    text : "關於顆顆", link : "#",
+    drop: [
+      {text : "車輛介紹", link : "/about/bus"},
+      {text : "顆顆願景", link : "/about/philosophy"},
+      {text : "服務條款", link : "/about/terms"},
+    ] 
+  },
+  {
+    text : "訂票系統", link : "/ticket"
+  },
+  {
+    text : "會員專區", link : "#",
+    drop: [
+      {text : "會員資料", link : "/user/data"},
+      {text : "里程優惠", link : "/user/mileage"},
+      {text : "常用路線", link : "/user/common"},
+      {text : "偏好設定", link : "/user/setting"},
+    ] 
+  },
+  {
+    text : "聯絡我們", link : "#",
+    drop: [
+      {text : "聯絡各站", link : "/contact/location"},
+      {text : "意見回饋", link : "/contact/feedback"},
+      {text : "人才招募", link : "/contact/jobs"},
+    ] 
+  },
+]; 
+%>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <!-- icon -->
+  <a class="navbar-brand" href="../">
+    <img class="nav-logo" src="/img/nav-logo.png" alt="avatar" onmousedown="return false;">
+  </a>
+  <!-- nav items -->
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <% for (const item of navItems) {  %>
+      <% if(item.drop) { %>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<%- item.link %>" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <%- item.text %>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <% for (const drop of item.drop) { %>
+          <a class="dropdown-item" href="<%- drop.link %>">
+            <%- drop.text %>
+          </a>
+          <% } %>
+        </div>
+      </li>
+      <% } else { %>
+      <li class="nav-item">
+        <a class="nav-link" href="<%- item.link %>">
+          <%- item.text %>
+        </a>
+      </li>
+      <% } %>
+      <% } %>
+    </ul>
+  </div>
+  <!-- hamburger button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+</nav>

@@ -4,9 +4,9 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "server",
+            "label": "Hot-loader server",
             "type": "shell",
-            "command": "node server.js",
+            "command": "supervisor --harmony server",
             "group": {
                 "kind": "build",
                 "isDefault": true

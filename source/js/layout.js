@@ -1,16 +1,3 @@
-// Banner Info
-var banner = new Vue({
-    el: '#banner',
-    delimiters: ['{{', '}}'],
-    data: {
-        bannerData: [
-            { src: '/img/banner-01.jpg', text: '我可以打文字我可以打文字我可以打文字' },
-            { src: '/img/banner-02.jpg', text: '我可以打文字2我可以打文字2我可以打文字2' },
-            { src: '/img/banner-01.jpg', text: '' },
-        ],
-    },
-});
-
 // Navbar show dropdown while hover
 const $dropdown = $(".dropdown");
 const $dropdownToggle = $(".dropdown-toggle");

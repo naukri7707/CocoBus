@@ -1,0 +1,33 @@
+{
+  "name": "cocobus",
+  "version": "1.0.0",
+  "description": "coco bus website",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "1.19.0",
+    "cookie-parser": "1.4.4",
+    "ejs": "3.0.1",
+    "ejs-lint": "^0.3.0",
+    "express": "4.17.1",
+    "express-session": "1.17.0",
+    "nedb": "1.8.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naukri7707/CocoBus.git"
+  },
+  "keywords": [
+    "cocobus"
+  ],
+  "author": "Naukri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naukri7707/CocoBus/issues"
+  },
+  "homepage": "https://github.com/naukri7707/CocoBus#readme"
+}

@@ -1,0 +1,14 @@
+<foot>
+  <%# jQuery %>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <%#  Bootstrap JS %>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"></script>
+  <%# layout %>
+  <%- js('/js/layout.js') %>
+  <%# other scripts %>
+  <% if (typeof scripts === 'object' && scripts) { %>
+  <% scripts.forEach(function(script) { %>
+  <%-  js(script) %>
+  <% }); %>
+  <% } %>
+</foot>

@@ -1,4 +1,2 @@
-{"account":"sysop","password":"sysop","nickname":"sysop","cellphone":"","email":"","_id":1}
-{"account":"qwe!@#1234","password":"qwe!@#123","nickname":"QQ","cellphone":"","email":"","_id":2}
-{"account":"asd!!QQQQ","password":"asd!!QQQQ!1","nickname":"asd!!QQQQ","cellphone":"","email":"","_id":3}
-{"_id":"__autoid__","uid":4}
+{"username":"sysop","password":"sysop","nickname":"sysop","cellphone":"","email":"","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"UserName0!","password":"UserName0!","nickname":"UserName0!","cellphone":"","email":"","level":1,"uid":0,"_id":"TryTnogrGHiuDUmu"}
