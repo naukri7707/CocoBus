@@ -35,8 +35,8 @@ router.get('/*', (req, res, next) => {
     }
 });
 
-router.get('/data', (req, res) => {
-    res.render('layout', { main: 'user/data', scripts: ['_script/data'] });
+router.get('/home', (req, res) => {
+    res.render('layout', { main: 'user/home' });
 });
 
 
@@ -50,7 +50,7 @@ router.get('/common', (req, res) => {
 });
 
 router.get('/setting', (req, res) => {
-    res.render('layout', { main: 'user/setting' });
+    res.render('layout', { main: 'user/setting', scripts: ['_script/setting'] });
 });
 
 router.get('/logout', (req, res) => {

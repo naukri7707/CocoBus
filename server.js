@@ -40,6 +40,6 @@ app.set('view engine', 'ejs');
 app.locals.js = (path) => { return '<script src="' + path + '"></script>' }
 app.locals.css = (path) => { return '<link rel="stylesheet" href="' + path + '">' }
 app.locals.copyrightYear = () => { return new Date().getFullYear(); };
-
+app.locals.root = __dirname + '/views/'
 
 const server = app.listen(8080);
