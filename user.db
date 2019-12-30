@@ -1,5 +1,5 @@
 {"username":"UserName9!","password":"UserName9!","nickname":"UserName9!","cellphone":"","email":"","level":1,"uid":0,"_id":"0Yixoa0NFXWlcFsg"}
-{"username":"sysop","password":"sysop","nickname":"sysop","cellphone":"0987654321","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654321","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
 {"username":"UserName5!","password":"UserName2!","nickname":"ASD","cellphone":"","email":"","level":1,"uid":0,"_id":"GjJNUWwDNJsngoLb"}
 {"username":"UserName7!","password":"UserName2!","nickname":"ASD","cellphone":"","email":"","level":1,"uid":0,"_id":"TegNDmSWanxbgCZX"}
 {"username":"UserName0!","password":"UserName0!","nickname":"UserName0!","cellphone":"0987654321","email":"","level":1,"uid":0,"_id":"TryTnogrGHiuDUmu","oldPassword":"UserName0!!"}
@@ -11,6 +11,8 @@
 {"username":"UserName8!","password":"UserName2!","nickname":"ASD","cellphone":"","email":"","level":1,"uid":0,"_id":"jgiy0XNNrZg5hvlz"}
 {"username":"UserName3!","password":"UserName2!","nickname":"ASD","cellphone":"","email":"","level":1,"uid":0,"_id":"lm7loBjZV5evWLb9"}
 {"username":"asdf123!!","password":"asdf123!!","nickname":"AQW","cellphone":"","email":"","level":1,"uid":0,"_id":"xLbHy6gMQsBkNsY6"}
-{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654321","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
-{"username":"sysop","password":"sysop","nickname":"系統管理員1","cellphone":"0987654321","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
-{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654321","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654789","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統管理","cellphone":"0987654789","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654789","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統","cellphone":"0987654789","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}
+{"username":"sysop","password":"sysop","nickname":"系統管理員","cellphone":"0987654789","email":"oooxx12345@oooxx.ooo.xx","level":100,"uid":0,"_id":"AV3tWH5mh2KgaIYP"}

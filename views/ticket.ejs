@@ -1,1 +1,90 @@
-訂票
+<% 
+const NOTSELECTED = "---請選擇---"
+
+const stations = [
+"基隆", 
+"台北",
+"新北", 
+"宜蘭", 
+"桃園", 
+"新竹", 
+"苗栗", 
+"台中", 
+"彰化", 
+"南投", 
+"雲林", 
+"嘉義", 
+"台南", 
+"高雄", 
+"屏東",
+"花蓮", 
+"台東", 
+];
+
+%>
+
+<h3>訂票查詢</h3>
+<form action="search" method="get">
+  起站
+  <select name="from">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% if(search.from) { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>" <%- item == search.from ? 'selected' : ''%>><%- item %></option>
+    <% } %>
+    <% } else { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>"><%- item %></option>
+    <% } %>
+    <% } %>
+  </select>
+  迄站
+  <select name="to">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% if(search.to) { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>" <%- item == search.to ? 'selected' : ''%>><%- item %></option>
+    <% } %>
+    <% } else { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>"><%- item %></option>
+    <% } %>
+    <% } %>
+  </select>
+
+  經
+  <select name="through">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% if(search.through) { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>" <%- item == search.through ? 'selected' : ''%>><%- item %></option>
+    <% } %>
+    <% } else { %>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>"><%- item %></option>
+    <% } %>
+    <% } %>
+  </select>
+  <input type="submit" class="btn btn-primary" value="搜尋"></input>
+</form>
+
+<% if (typeof results == 'object' && results) { %>
+<div id="results">
+  <% if(results.length === 0) { %>
+  <h1>沒有符合條件的車輛</h1>
+  <% } else { %>
+  <% for(const [i, item] of results.entries()) { %>
+  <% if(i > 0) {%>
+  <hr>
+  <% } %>
+  <div>
+    <h1><%- item.number %></h1>
+    <img src="<%- item.img %>">
+    <h3><%- item.from %> - <%- item.to %></h3>
+    <h3><%- item.startTime %> - <%- item.endTime %></h3>
+    <h4>約每<%- item.interval %>分鐘一班</h4>
+  </div>
+  <% } %>
+  <% } %>
+</div>
+<% } %>

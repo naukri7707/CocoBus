@@ -67,9 +67,9 @@ router.get('/logout', (req, res) => {
 router.post('/login', (req, res) => {
     const body = req.body;
     if (body.username === "") {
-        res.json({ code: -1, msg: "帳號為空" });
+        res.json({ code: -1, msg: "帳號為不可為空" });
     } else if (body.password === "") {
-        res.json({ code: -1, msg: "密碼為空" });
+        res.json({ code: -1, msg: "密碼為不可為空" });
     } else {
         db.findOne({ 'username': body.username }, (err, doc) => {
             if (err) {
@@ -158,6 +158,7 @@ router.post('/*', (req, res, next) => {
         res.json({ code: -2, msg: "請先登入" });
     }
 });
+
 router.post('/set-info', (req, res) => {
     const body = req.body;
     const emailReg = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/

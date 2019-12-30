@@ -1,2 +1,2 @@
-{"number":"1814","img":"/img/nav-logo.png","from":"台中","to":"高雄","cost":"300","startTime":"05:00","endTime":"18:00","interval":"60","_id":"TryTnogrAXiuDUmu"}
-{"number":"1813","img":"/img/nav-logo.png","from":"台北","to":"基隆","cost":"100","startTime":"06:00","endTime":"00:15","interval":"30","_id":"TryTnogrGHiuDUmu"}
+{"number":"1814","img":"/img/nav-logo.png","from":"台中","to":"高雄","through":"台南","cost":"300","startTime":"05:00","endTime":"18:00","interval":"60","_id":"TryTnogrAXiuDUmu"}
+{"number":"1813","img":"/img/nav-logo.png","from":"台北","to":"基隆","through":"新北","cost":"100","startTime":"06:00","endTime":"00:15","interval":"30","_id":"TryTnogrGHiuDUmu"}
