@@ -1,6 +1,7 @@
 // import
 const express = require('express');
 const DataStore = require('nedb');
+const verify = require(`${__root}verify`);
 
 // const
 const router = express.Router();
@@ -10,7 +11,7 @@ const db = new DataStore({ filename: require.main.path + '\\user.db', autoload: 
 var uid = -1;
 
 db.find({}).sort({ uid: -1 }).limit(1).exec(function (err, doc) {
-    uid = doc[0].uid
+    uid = doc[0].uid + 1;
 });
 
 // Get
@@ -23,7 +24,8 @@ router.get('/login', function (req, res) {
 });
 
 router.get('/sign-up', function (req, res) {
-    res.render('layout', { main: 'user/sign-up', scripts: ['_script/sign-up'] });
+    req.session.verify = verify.makeVerify();
+    res.render('layout', { main: 'user/sign-up', verify: req.session.verify, scripts: ['_script/sign-up'] });
 });
 
 // 攔截登入、註冊外的所有請求，若尚未登入則引導至 login
@@ -120,6 +122,10 @@ router.post('/sign-up', (req, res) => {
         res.json({ code: -1, msg: "無效的手機號碼" });
     } else if (body.email !== undefined && !emailReg.test(body.email)) {
         res.json({ code: -1, msg: "無效的信箱" });
+    } else if (req.session.verify === undefined) {
+        res.json({ code: -1, msg: "驗證碼已過期請重新整理頁面" });
+    } else if (!verify.auditVerify(req.session.verify, req.body.verifyAns)) {
+        res.json({ code: -1, msg: "驗證碼錯誤" });
     } else {
         db.findOne({ 'username': body.username }, (err, doc) => {
             if (err) {
@@ -128,7 +134,8 @@ router.post('/sign-up', (req, res) => {
                 res.json({ code: -1, msg: "該帳號已被註冊" });
             } else {
                 body.level = 1
-                if (body.nickname === undefined) {
+                delete body.verifyAns
+                if (body.nickname === "") {
                     body.nickname = body.username;
                 }
                 db.insertWithUid(body, (err, doc) => {

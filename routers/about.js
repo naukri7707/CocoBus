@@ -8,9 +8,7 @@ const db = new DataStore({ filename: require.main.path + '\\bus.db', autoload: t
 
 // Get
 router.get('/bus', function (req, res) {
-    db.find({}).exec((err, doc) => {
-        res.render('layout', { main: 'about/bus', data: doc });
-    });
+    res.render('layout', { main: 'about/bus' });
 });
 
 router.get('/philosophy', function (req, res) {

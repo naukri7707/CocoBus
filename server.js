@@ -1,3 +1,5 @@
+// gobal veriables
+__root = __dirname + '/'
 // import
 const express = require('express');
 const bodyParser = require('body-parser');

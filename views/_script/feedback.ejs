@@ -1,0 +1,38 @@
+<script>
+  const $name = $('#name');
+  const $email = $('#email')
+  const $title = $('#title')
+  const $content = $('#content');
+  const $verifyAns = $('#verifyAns');
+
+  function feedback() {
+    $.post(
+      "/contact/feedback",
+      {
+        name: $name.val(),
+        email: $email.val(),
+        title: $title.val(),
+        content: $content.val(),
+        verifyAns: $verifyAns.val()
+      },
+      (res) => {
+        if (res.code <= 0) {
+          alert(res.msg);
+        } else {
+          alert("奇怪的錯誤，請聯繫管理員\n" + res.msg + "\nError Code:" + res.code);
+        }
+      }
+    );
+  }
+
+  function refresh() {
+    $.post(
+      "/contact/refresh",
+      {},
+      (res) => {
+        $verifyAns.attr('placeholder', `${res.lhs} ${res.sym} ${res.rhs}`);
+      }
+    );
+  }
+
+</script>

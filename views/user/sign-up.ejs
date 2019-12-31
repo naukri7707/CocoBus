@@ -2,15 +2,15 @@
   <div class="col-12">
     <div id="sign-up">
       <div class="field">
-        <div>*帳號</div>
+        <div>帳號<span style="color: red">*</span></div>
         <input id="username" type="text" placeholder="帳號">
       </div>
       <div class="field">
-        <div>*密碼</div>
+        <div>密碼<span style="color: red">*</span></div>
         <input id="password" type="password" placeholder="密碼">
       </div>
       <div class="field">
-        <div>*確認密碼</div>
+        <div>確認密碼<span style="color: red">*</span></div>
         <input id="checkPassword" type="password" placeholder="確認密碼">
       </div>
       <div class="field">
@@ -22,8 +22,13 @@
         <input id="cellphone" type="text" placeholder="手機號碼">
       </div>
       <div class="field">
-        <div>電子信箱</div>
+        <div>電子信箱<span style="color: red">*</span></div>
         <input id="email" type="text" placeholder="電子信箱">
+      </div>
+      <div class="field">
+        <div>驗證碼</div>
+        <input id="verifyAns" type="text" placeholder="<%- verify.lhs %> <%- verify.sym %> <%- verify.rhs %>" />
+        <i class="refresh fas fa-sync" onclick="refresh()"></i></br></br>
       </div>
       <button class=" btn btn-primary" onclick="signup()">註冊</button>
     </div>

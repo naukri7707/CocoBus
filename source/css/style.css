@@ -11,7 +11,28 @@ body {
 }
 
 #main {
+  margin: 4em auto 8em;
   min-height: 1000px;
+}
+
+hr {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+.refresh:hover {
+  cursor: pointer;
+  transform: rotate(360deg);
+  transition: transform 1s ease;
+}
+
+.refresh {
+  transform: rotate(0deg);
+  transition: transform 0.75s ease;
+}
+
+#station table {
+  width: 100%;
+  font-size: 1.5em;
 }
 
 .navbar .dropdown-menu {

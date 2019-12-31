@@ -5,10 +5,11 @@
   const $nickname = $('#nickname');
   const $cellphone = $('#cellphone');
   const $email = $('#email');
+  const $verifyAns = $('#verifyAns');
 
   function signup() {
-    if (password != checkPassword) {
-      assert.log("兩次輸入的密碼不相同")
+    if ($password.val() != $checkPassword.val()) {
+      alert("兩次輸入的密碼不相同");
     } else {
       $.post(
         "/user/sign-up",
@@ -17,7 +18,8 @@
           password: $password.val(),
           nickname: $nickname.val(),
           cellphone: $cellphone.val(),
-          email: $email.val()
+          email: $email.val(),
+          verifyAns: $verifyAns.val()
         },
         (res) => {
           if (res.code <= 0) {
@@ -33,5 +35,15 @@
         }
       );
     }
+  }
+
+  function refresh() {
+    $.post(
+      "/contact/refresh",
+      {},
+      (res) => {
+        $verifyAns.attr('placeholder', `${res.lhs} ${res.sym} ${res.rhs}`);
+      }
+    );
   }
 </script>

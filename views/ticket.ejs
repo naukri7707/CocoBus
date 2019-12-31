@@ -11,8 +11,8 @@ const stations = [
 
 %>
 
-<h3>訂票查詢</h3>
-<form action="search" method="get">
+<h1>訂票查詢</h1>
+<form action="search" method="GET">
   起站
   <select name="from">
     <option value="" disabled selected hidden><%- NOTSELECTED %></option>
@@ -66,13 +66,49 @@ const stations = [
   <hr>
   <% } %>
   <div>
-    <h1><%- item.number %></h1>
+    <h1><%- item.serial %></h1>
     <img src="<%- item.img %>">
-    <h3><%- item.from %> - <%- item.to %></h3>
+    <h3><%- item.from %> - <%- item.to %> 經 <%- item.through %></h3>
     <h3><%- item.startTime %> - <%- item.endTime %></h3>
     <h4>約每<%- item.interval %>分鐘一班</h4>
+    <% if(userdata && userdata.level === 100) { %>
+    <div onclick="remove('<%- item.serial %>')" style="cursor: pointer;color: red;">
+      <i class="fas fa-trash-alt fa-2x"></i>
+    </div>
+    <% } %>
   </div>
   <% } %>
+  <% } %>
+  <% if(userdata && userdata.level === 100) { %>
+  <hr>
+  <h1>新增資料</h1>
+  序號 <input id="serial" type="text" placeholder="0000"></br></br>
+  圖片路徑 <input id="img" type="text" placeholder="/img/bus"></br></br>
+  起站
+  <select id="from">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>"><%- item %></option>
+    <% } %>
+  </select>
+  迄站
+  <select id="to">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% for (const item of stations) {  %>
+    <option value="<%- item %>"><%- item %></option>
+    <% } %>
+  </select>
+  經
+  <select id="through">
+    <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+    <% for (const item of stations) {  %>
+    <option value=" <%- item %>"><%- item %></option>
+    <% } %>
+  </select></br></br>
+  首班時間 <input id="startTime" type="text" placeholder="00:00"></br></br>
+  末班時間 <input id="endTime" type="text" placeholder="23:59"></br></br>
+  約幾分鐘一班 <input id="interval" type="text" placeholder="30"></br>
+  <button class="btn btn-primary" onclick="add()">新增</button>
   <% } %>
 </div>
 <% } %>

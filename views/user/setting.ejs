@@ -1,23 +1,31 @@
 <%
-let nickname = ""
-let cellphone = ""
-let email = ""
-if(userdata) {
-    nickname = userdata.nickname
-    cellphone = userdata.cellphone
-    email = userdata.email
+const level = {
+  0 : "此用戶已刪除",
+  1 : "普通會員",
+  2 : "進階會員",
+  3 : "高級會員",
+  4 : "尊榮會員",
+  90 : "系統協力者",
+  100 : "系統管理員"
 }
 %>
 
 <div class="row">
   <div class="col-12">
+    <h1>會員資料</h1>
+    <hr>
     <h2>基本資料</h2>
+    帳號 <input id="username" type="text" placeholder="帳號" value="<%- userdata.username %>" disabled></br></br>
+    UID <input id="uid" type="text" placeholder="UID" value="<%- userdata.uid %>" disabled></br></br>
+    等級 <input id="level" type="text" placeholder="UID" value="<%- level[userdata.level]%>" disabled>
+    <a href="#usergroup">我該如何升級會員?</a></br></br>
     <div id="sign-up">
-      暱稱 <input id="nickname" type="text" placeholder="暱稱" value="<%- nickname %>"></br></br>
-      手機號碼 <input id="cellphone" type="text" placeholder="手機" value="<%- cellphone %>"></br></br>
-      電子信箱 <input id="email" type="text" placeholder="電子信箱" value="<%- email %>"></br></br>
+      暱稱 <input id="nickname" type="text" placeholder="暱稱" value="<%- userdata.nickname %>"></br></br>
+      手機號碼 <input id="cellphone" type="text" placeholder="手機" value="<%- userdata.cellphone %>"></br></br>
+      電子信箱 <input id="email" type="text" placeholder="電子信箱" value="<%- userdata.email %>"></br></br>
       <button class=" btn btn-primary" onclick="setInfo()">修改</button>
     </div>
+    <hr>
     <h2>修改密碼</h2>
     <div id="sign-up">
       舊的密碼 <input id="oldPassword" type="password" placeholder="舊的密碼"></br></br>
