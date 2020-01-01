@@ -1,3 +1,4 @@
+<% if(userdata && userdata.level === 100) { %>
 <script>
   const $serial = $('#serial');
   const $img = $('#img');
@@ -19,8 +20,6 @@
           alert(res.msg);
           if (res.code === 0) {
             window.location.reload();
-          } else if (res.code === -2) {
-            window.location.href = "login";
           }
         } else {
           alert("奇怪的錯誤，請聯繫管理員\n" + res.msg + "\nError Code:" + res.code);
@@ -57,3 +56,4 @@
   }
 
 </script>
+<% } %>

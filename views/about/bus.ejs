@@ -1,4 +1,11 @@
 <%
+
+/**
+ * @param {String} title       標題
+ * @param {String} img         圖片路徑
+ * @param {Array}  tags        標籤          
+ * @param {Array}  description 內文，每項以 <p> 為容器
+ */
 const busdata = [
   {
     title: '顆顆1號',
@@ -42,7 +49,7 @@ const busdata = [
     <% if (i > 0) { %>
     <hr>
     <% } %>
-    <div id="bus<%- i %>">
+    <div id="<%- bus.id %>">
       <h1><%- bus.title %></h1>
       <img src="<%- bus.img %>">
       <ul>

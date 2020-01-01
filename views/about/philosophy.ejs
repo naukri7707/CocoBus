@@ -1,5 +1,11 @@
 <%
 const title = '顆顆願景'
+
+/**
+ * @param {String} id          錨點
+ * @param {String} title       標題
+ * @param {Array}  description 內文，每項以 <p> 為容器
+ */
 const terms = [
   {
     title: '夢幻名單。',
@@ -75,9 +81,9 @@ const terms = [
 <div class="row">
   <div class="col-12">
     <h1><%- title %></h1>
-    <% for(const [i, term] of terms.entries()) { %>
+    <% for(const term of terms) { %>
     <hr>
-    <div id="term<%- i %>">
+    <div id="<%- term.id %>">
       <h3><%- term.title %></h3>
       <% for(const paragraph of term.description) { %>
       <p style="text-indent:2em;">

@@ -1,0 +1,65 @@
+<% 
+const NOTSELECTED = "---請選擇---"
+
+const stations = [
+"基隆", "台北", "新北", "宜蘭", 
+"桃園", "新竹", "苗栗", "台中", 
+"彰化", "南投", "雲林", "嘉義", 
+"台南", "高雄", "屏東", "花蓮", 
+"台東", 
+];
+%>
+<h1>班次查詢</h1>
+<form action="search" method="GET">
+  起站 <%- partial('_widget/station-selector', {id: 'from', selected: search.from }); %>
+  起站 <%- partial('_widget/station-selector', {id: 'from', selected: search.from }); %>
+  迄站 <%- partial('_widget/station-selector', {id: 'to', selected: search.to}); %>
+  經 <%- partial('_widget/station-selector', {id: 'through', selected: search.through}); %></br></br>
+  <input type="submit" class="btn btn-primary" value="搜尋"></input>
+</form>
+
+<% if (typeof results == 'object' && results) { %>
+<div id="results">
+  <% if(results.length === 0) { %>
+  <h1>沒有符合條件的車輛</h1>
+  <% } else { %>
+  <% for(const [i, item] of results.entries()) { %>
+  <% if(i > 0) {%>
+  <hr>
+  <% } %>
+  <div>
+    <h1><%- item.serial %></h1>
+    <img src="<%- item.img %>">
+    <h3><%- item.from %> - <%- item.to %> 經 <%- item.through %></h3>
+    <h3><%- item.startTime %> - <%- item.endTime %></h3>
+    <h4>約每<%- item.interval %>分鐘一班</h4>
+    <% if(userdata && userdata.level === 100) { %>
+    <div onclick="remove('<%- item.serial %>')" style="cursor: pointer;color: red;">
+      <i class="fas fa-trash-alt fa-2x"></i>
+    </div>
+    <% } %>
+  </div>
+  <% } %>
+  <% } %>
+  <% if(userdata && userdata.level === 100) { %>
+  <% js('sysop'); %>
+  <hr>
+  <h2>新增資料</h2>
+  車號 <input id="serial" type="text" placeholder="0000"></br></br>
+  圖片路徑 <input id="img" type="text" placeholder="/img/bus"></br></br>
+  票價 <input id="cost" type="text" placeholder="100"></br></br>
+  起站 <%- partial('_widget/station-selector', {id: 'from'}); %>
+  迄站 <%- partial('_widget/station-selector', {id: 'to'}); %>
+  經 <%- partial('_widget/station-selector', {id: 'through'}); %></br></br>
+  首班時間 <%- partial('_widget/time-selector', {id: 'start'}); %>
+  末班時間 <%- partial('_widget/time-selector', {id: 'end'}); %></br></br>
+  約
+  <select id="interval">
+    <% for (let i = 5; i < 60; i+=5) {  %>
+    <option value="<%- i %>"><%- i %></option>
+    <% } %>
+  </select>分鐘一班</br></br>
+  <button class="btn btn-primary" onclick="add()">新增</button>
+  <% } %>
+</div>
+<% } %>

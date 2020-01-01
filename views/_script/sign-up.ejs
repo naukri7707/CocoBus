@@ -27,6 +27,8 @@
             if (res.code === 0) {
               window.location.href = "/";
             } else if (res.code === -2) {
+              window.location.reload();
+            } else if (res.code === -9) {
               window.location.href = "login";
             }
           } else {

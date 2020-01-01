@@ -10,5 +10,3 @@
 {"serial":"1145","img":"/img/nav-logo.png","from":"台北","to":"基隆","through":"新北","cost":"100","startTime":"06:00","endTime":"00:15","interval":"30","_id":"TryTnogrGHiuGUmT"}
 {"serial":"1978","img":"/img/nav-logo.png","from":"台北","to":"基隆","through":"新北","cost":"100","startTime":"06:00","endTime":"00:15","interval":"30","_id":"TryTnogrHHiuDUmT"}
 {"serial":"1234","img":"","from":"新北","to":"屏東","through":" 花蓮","startTime":"00:00","endTime":"20:20","interval":"60","_id":"aeLfnlqLak28Ac00"}
-{"serial":"0001","img":"","from":"台北","to":"台中","through":" 新竹","startTime":"00:00","endTime":"09:20","interval":"30","_id":"MRRkzHHf16fi23dv"}
-{"$$deleted":true,"_id":"MRRkzHHf16fi23dv"}

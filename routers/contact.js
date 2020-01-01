@@ -6,6 +6,17 @@ const DataStore = require('nedb');
 const router = express.Router();
 const db = new DataStore({ filename: `${__root}/feedback.db`, autoload: true });
 
+var fid = 1;
+
+db.find({}).sort({ _id: -1 }).limit(1).exec((err, doc) => {
+    if (err) {
+        console.log("Feedback ID 初始化失敗");
+    }
+    if (doc.length > 0) {
+        fid = doc[0]._id + 1;
+    }
+});
+
 // Get
 router.get('/station', (req, res) => {
     res.render('layout', { main: 'contact/station' });
@@ -13,7 +24,7 @@ router.get('/station', (req, res) => {
 
 router.get('/feedback', (req, res) => {
     req.session.verify = verify.makeVerify();
-    res.render('layout', { main: 'contact/feedback', verify: req.session.verify, scripts: ['_script/feedback'] });
+    res.render('layout', { main: 'contact/feedback', verify: req.session.verify });
 });
 
 router.get('/jobs', (req, res) => {
@@ -37,15 +48,20 @@ router.post('/feedback', (req, res) => {
     } else if (body.content.length < 10) {
         res.json({ code: -1, msg: "內文不可少於10字" });
     } else if (req.session.verify === undefined) {
-        res.json({ code: -1, msg: "驗證碼已過期請重新整理頁面" });
+        res.json({ code: -2, msg: "驗證碼已過期為您重新整理頁面" });
     } else if (!verify.auditVerify(req.session.verify, req.body.verifyAns)) {
         res.json({ code: -1, msg: "驗證碼錯誤" });
     } else {
+        let date = new Date();
+        body.time = `${date.getFullYear()}年${date.getMonth()}月${date.getDate()}日${date.getHours()}:${date.getMinutes()}`
+        body.reply = false;
+        body._id = fid++;
         db.insert(body, (err, doc) => {
             if (err) {
                 res.json({ code: 1, msg: "奇怪的錯誤" });
             } else {
                 res.json({ code: 0, msg: "寄送完成\n\n感謝您的回覆 :)" });
+                req.session.verify = verify.makeVerify();
             }
         });
     }

@@ -10,8 +10,7 @@ router.get('/', (req, res) => {
     res.render('layout', { main: 'ticket' });
 });
 
-// Post
-router.get('/search', (req, res) => {
+router.get('/book', (req, res) => {
     const query = req.query;
     const search = {};
     if (query.from !== undefined) {
@@ -25,13 +24,31 @@ router.get('/search', (req, res) => {
     }
     db.find(search).exec(function (err, doc) {
         if (req.session.userdata && req.session.userdata.level === 100) {
-            res.render('layout', { main: 'ticket', search: search, results: doc, scripts: ['_script/sysop'] });
+            res.render('layout', { main: 'ticket/book', search: search, results: doc });
         } else {
-            res.render('layout', { main: 'ticket', search: search, results: doc });
+            res.render('layout', { main: 'ticket/book', search: search, results: doc });
         }
     });
 });
 
+router.get('/search', (req, res) => {
+    const query = req.query;
+    const search = {};
+    if (query.from !== undefined) {
+        search.from = query.from;
+    }
+    if (query.to !== undefined) {
+        search.to = query.to;
+    }
+    if (query.through !== undefined) {
+        search.through = query.through;
+    }
+    db.find(search).exec(function (err, doc) {
+        res.render('layout', { main: 'ticket/search', search: search, results: doc });
+    });
+});
+
+// Post
 router.post('/remove', (req, res) => {
     db.remove({ serial: req.body.serial }, (err, ret) => {
         if (ret === 0) {

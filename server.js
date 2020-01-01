@@ -39,9 +39,11 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 // extension methods
-app.locals.js = (path) => { return '<script src="' + path + '"></script>' }
-app.locals.css = (path) => { return '<link rel="stylesheet" href="' + path + '">' }
 app.locals.copyrightYear = () => { return new Date().getFullYear(); };
-app.locals.root = __dirname + '/views/'
-
+const __views = __dirname + '/views/'
+app.locals.__views = __views
+// include scripts array
+app.locals.scripts = [];
+// lazy include script
+app.locals.js = (path) => { app.locals.scripts.push(path) }
 const server = app.listen(8080);

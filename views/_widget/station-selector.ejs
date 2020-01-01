@@ -1,0 +1,25 @@
+<%#- include(`${__views}/_widget/station-selector`, {id: '', selected: ''}); %>
+<% 
+const NOTSELECTED = "---請選擇---"
+
+const stations = [
+"基隆", "台北", "新北", "宜蘭", 
+"桃園", "新竹", "苗栗", "台中", 
+"彰化", "南投", "雲林", "嘉義", 
+"台南", "高雄", "屏東", "花蓮", 
+"台東", 
+];
+%>
+
+<select id="<%- id %>">
+  <% if(typeof selected  == 'object' && selected && selected !== '') { %>
+  <% for (const item of stations) {  %>
+  <option value="<%- item %>" <%- item == selected ? 'selected' : ''%>><%- item %></option>
+  <% } %>
+  <% } else {%>
+  <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+  <% for (const item of stations) {  %>
+  <option value="<%- item %>"><%- item %></option>
+  <% } %>
+  <% } %>
+</select>

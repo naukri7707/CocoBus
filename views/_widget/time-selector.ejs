@@ -1,0 +1,11 @@
+<%#- include(`${__views}/_widget/time-selector`, {id: ''}); %>
+<select id="<%- id %>Hour">
+  <% for (let i = 0; i < 24; i++) {  %>
+  <option value="<%- i %>"><%- i %></option>
+  <% } %>
+</select>：
+<select id="<%- id %>Minute">
+  <% for (let i = 5; i < 60; i+=5) {  %>
+  <option value="<%- i %>"><%- i %></option>
+  <% } %>
+</select>

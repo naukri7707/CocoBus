@@ -8,24 +8,29 @@ const router = express.Router();
 const db = new DataStore({ filename: require.main.path + '\\user.db', autoload: true });
 
 // variables
-var uid = -1;
+var uid = 1;
 
-db.find({}).sort({ uid: -1 }).limit(1).exec(function (err, doc) {
-    uid = doc[0].uid + 1;
-});
-
-// Get
-router.get('/login', function (req, res) {
-    if (req.session.userdata) {
-        res.redirect('/');
-    } else {
-        res.render('layout', { main: 'user/login', scripts: ['_script/login'] });
+db.find({}).sort({ uid: -1 }).limit(1).exec((err, doc) => {
+    if (err) {
+        console.log("User ID 初始化失敗");
+    }
+    if (doc) {
+        uid = doc[0].uid + 1;
     }
 });
 
-router.get('/sign-up', function (req, res) {
+// Get
+router.get('/login', (req, res) => {
+    if (req.session.userdata) {
+        res.redirect('/');
+    } else {
+        res.render('layout', { main: 'user/login' });
+    }
+});
+
+router.get('/sign-up', (req, res) => {
     req.session.verify = verify.makeVerify();
-    res.render('layout', { main: 'user/sign-up', verify: req.session.verify, scripts: ['_script/sign-up'] });
+    res.render('layout', { main: 'user/sign-up', verify: req.session.verify });
 });
 
 // 攔截登入、註冊外的所有請求，若尚未登入則引導至 login
@@ -52,7 +57,7 @@ router.get('/common', (req, res) => {
 });
 
 router.get('/setting', (req, res) => {
-    res.render('layout', { main: 'user/setting', scripts: ['_script/setting'] });
+    res.render('layout', { main: 'user/setting' });
 });
 
 router.get('/logout', (req, res) => {
@@ -123,7 +128,7 @@ router.post('/sign-up', (req, res) => {
     } else if (body.email !== undefined && !emailReg.test(body.email)) {
         res.json({ code: -1, msg: "無效的信箱" });
     } else if (req.session.verify === undefined) {
-        res.json({ code: -1, msg: "驗證碼已過期請重新整理頁面" });
+        res.json({ code: -2, msg: "驗證碼已過期為您重新整理頁面" });
     } else if (!verify.auditVerify(req.session.verify, req.body.verifyAns)) {
         res.json({ code: -1, msg: "驗證碼錯誤" });
     } else {
@@ -162,7 +167,7 @@ router.post('/*', (req, res, next) => {
     if (req.session.userdata) {
         next();
     } else {
-        res.json({ code: -2, msg: "請先登入" });
+        res.json({ code: -9, msg: "請先登入" });
     }
 });
 
@@ -220,7 +225,7 @@ router.post('/set-password', (req, res) => {
                 res.json({ code: -1, msg: "找不到使用者，請嘗試重新登錄後再試一次" });
             } else if (num == 1) {
                 req.session.destroy((err) => {
-                    res.json({ code: -2, msg: "密碼更新完成，請重新登入" });
+                    res.json({ code: -9, msg: "密碼更新完成，請重新登入" });
                 });
             } else {
                 console.log("oops," + req.session.userdata.username + "update other people's data");

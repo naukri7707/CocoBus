@@ -14,7 +14,7 @@
           if (res.code === 0) {
             window.location.href = "/";
           } else if (res.code === -2) {
-            window.location.href = "login";
+            window.location.reload();
           }
         } else {
           alert("奇怪的錯誤，請聯繫管理員\n" + res.msg + "\nError Code:" + res.code);
