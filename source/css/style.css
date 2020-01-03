@@ -19,8 +19,20 @@ hr {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-.refresh:hover {
+.ui-datepicker-trigger {
+  margin-bottom: 0.3em;
+  margin-left: 0.2em;
   cursor: pointer;
+  user-select: none;
+  height: 1.5em;
+}
+
+.click-icon {
+  cursor: pointer;
+  user-select: none;
+}
+
+.refresh:hover {
   transform: rotate(360deg);
   transition: transform 1s ease;
 }
@@ -28,6 +40,30 @@ hr {
 .refresh {
   transform: rotate(0deg);
   transition: transform 0.75s ease;
+}
+
+.arrow {
+  user-select: none;
+  cursor: pointer;
+}
+
+.arrow:after {
+  display: inline-block;
+  margin-left: 0.255em;
+  vertical-align: 0.255em;
+  content: "";
+  border-right: 0.3em solid transparent;
+  border-left: 0.3em solid transparent;
+}
+
+.up.arrow:after {
+  border-top: 0;
+  border-bottom: 0.3em solid;
+}
+
+.down.arrow:after {
+  border-top: 0.3em solid;
+  border-bottom: 0;
 }
 
 #station table {

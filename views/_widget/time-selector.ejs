@@ -1,11 +1,13 @@
 <%#- include(`${__views}/_widget/time-selector`, {id: ''}); %>
-<select id="<%- id %>Hour">
+<select id="<%- id %>Hour" name="<%- id %>Hour">
   <% for (let i = 0; i < 24; i++) {  %>
-  <option value="<%- i %>"><%- i %></option>
+  <% let text = i.toString().padStart(2, 0);  %>
+  <option value="<%- text %>"><%- text %></option>
   <% } %>
-</select>：
-<select id="<%- id %>Minute">
-  <% for (let i = 5; i < 60; i+=5) {  %>
-  <option value="<%- i %>"><%- i %></option>
+</select>時
+<select id="<%- id %>Minute" name="<%- id %>Minute">
+  <% for (let i = 0; i < 60; i+=10) { %>
+  <% let text = i.toString().padStart(2, 0);  %>
+  <option value="<%- text %>"><%- text %></option>
   <% } %>
-</select>
+</select>分

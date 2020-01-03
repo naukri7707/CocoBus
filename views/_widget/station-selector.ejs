@@ -1,23 +1,34 @@
-<%#- include(`${__views}/_widget/station-selector`, {id: '', selected: ''}); %>
+<%#- partial('_widget/station-selector', {id: ''[, selected: '']}); %>
 <% 
 const NOTSELECTED = "---請選擇---"
 
 const stations = [
-"基隆", "台北", "新北", "宜蘭", 
-"桃園", "新竹", "苗栗", "台中", 
-"彰化", "南投", "雲林", "嘉義", 
-"台南", "高雄", "屏東", "花蓮", 
-"台東", 
+"羅東", "基隆", "台北轉運",
+"重陽", "林口", "板橋",
+"桃園", "經國站", "經國轉運", 
+"中壢", "中壢民族", "龍潭",
+"新竹", "清大", "頭份",
+"竹南", "苗栗", "苗栗龜山",
+"苑裡", "台中", "水湳",
+"朝馬", "彰化", "員林",
+"北斗", "草屯", "中興",
+"社口", "南投", "埔里",
+"雙冬", "柑子林", "北山坑",
+"崎下", "魚池", "日月潭",
+"西螺", "嘉義", "新營",
+"台南", "鹽行", "楠梓",
+"高雄中正", "高雄", "屏東九如",
+"屏東", "中台博館", "中台禪寺",
+"普台高中", "太平山",
 ];
 %>
-
-<select id="<%- id %>">
-  <% if(typeof selected  == 'object' && selected && selected !== '') { %>
+<select id="<%- id %>" name="<%- id %>">
+  <% if(typeof selected == 'object' && selected && selected !== '') { %>
   <% for (const item of stations) {  %>
   <option value="<%- item %>" <%- item == selected ? 'selected' : ''%>><%- item %></option>
   <% } %>
   <% } else {%>
-  <option value="" disabled selected hidden><%- NOTSELECTED %></option>
+  <option disabled selected hidden><%- NOTSELECTED %></option>
   <% for (const item of stations) {  %>
   <option value="<%- item %>"><%- item %></option>
   <% } %>

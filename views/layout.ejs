@@ -1,17 +1,28 @@
 <% 
+// 每渲染一次就會重新賦予這個區域值
+/**
+ * @param {String} path 從 root/views/開始的絕對路徑
+ * @param {Object} data 從 req 取得的資料映射
+ */
 partial = (path, data) => { 
   return include(`${__views}/${path}`, data); 
-}
-%>
+};
 
+// 懶載入 HTML 內嵌 JS
+scripts = [];
+js = (path) => { scripts.push(path) }
+
+// 鎖定 partial ejs 引入區域避免多次引入
+lock = {};
+%>
 <%# 必要引入 main %>
 <!DOCTYPE html>
 <html lang="zh-TW">
-<%-partial('_partial/head'); %>
+<%- partial('_partial/head'); %>
 
 <body>
-  <%-partial('_partial/header'); %>
-  <%-partial('_partial/navbar'); %>
+  <%- partial('_partial/header'); %>
+  <%- partial('_partial/navbar'); %>
   <main id="main" class="container">
     <% if (typeof data == 'object' && data) { %>
     <%-partial(main, { data: data }); %>
@@ -19,9 +30,9 @@ partial = (path, data) => {
     <%-partial(main); %>
     <% } %>
   </main>
-  <%-partial('_partial/footer'); %>
+  <%- partial('_partial/footer'); %>
   <%# scripts %>
-  <%-partial('_partial/foot'); %>
+  <%- partial('_partial/foot'); %>
   <%- partial('_script/layout'); %>
   <% for (const script of scripts) { %>
   <%- partial('_script/' + script); %>

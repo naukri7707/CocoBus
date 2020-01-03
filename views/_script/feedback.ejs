@@ -27,15 +27,4 @@
       }
     );
   }
-
-  function refresh() {
-    $.post(
-      "/contact/refresh",
-      {},
-      (res) => {
-        $verifyAns.attr('placeholder', `${res.lhs} ${res.sym} ${res.rhs}`);
-      }
-    );
-  }
-
 </script>

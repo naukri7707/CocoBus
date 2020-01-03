@@ -235,6 +235,9 @@ router.post('/set-password', (req, res) => {
     }
 });
 
+router.get('/*', (req, res) => {
+    res.render('layout', { main: '404' });
+});
 
 // extension methods
 DataStore.prototype.insertWithUid = function (value, func) {
@@ -247,9 +250,5 @@ DataStore.prototype.insertWithUid = function (value, func) {
         func(err, ret)
     });
 }
-
-router.get('/*', (req, res) => {
-    res.render('layout', { main: '404' });
-});
 
 module.exports = router;

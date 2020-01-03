@@ -1,0 +1,18 @@
+<div id="results">
+  <% if (typeof results == 'object' && results) { %>
+  <% if(results.length === 0) { %>
+  <h1>沒有符合條件的車輛</h1>
+  <% } else { %>
+  <% for(const [i,item] of results.entries()) { %>
+  <%- i > 0 ? '<hr>' : '' %>
+  <h1><%- item._id %></h1><%- item.type %>
+  <h3><%- item.from %> 到 <%- item.to %> 經 <%- item.through %></h3>
+  <h5><%- item.day %>，<%- Math.floor(item.time / 60 ) %>點<%- item.time % 60 %>分</h5>
+  <h3>票價：<%- item.cost %>，剩餘<%- item.remain %>張</h3>
+  <button class="btn btn-primary" onclick="add()">選擇</button>
+  <% } %>
+  <% } %>
+  <% } else { %>
+  <h1>似乎出現了問題，請再試一次</h1>
+  <% } %>
+</div>

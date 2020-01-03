@@ -23,11 +23,15 @@ app.use(session({
     secret: SECRET_KEY,
     cookie: { maxAge: EXPIRES }
 }))
-// ejs 全域變數
+// 從 routers 設定 ejs 全域變數
 app.use(function (req, res, next) {
+    app.locals.req = req;
+    app.locals.data = req.method === 'GET' ? req.query : req.body;
+    app.locals.session = req.session;
     app.locals.userdata = req.session.userdata;
     next();
 });
+
 // routers
 app.use('/', indexRouter);
 app.use('/about', aboutRouter);
@@ -39,11 +43,9 @@ app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 
 // extension methods
-app.locals.copyrightYear = () => { return new Date().getFullYear(); };
-const __views = __dirname + '/views/'
-app.locals.__views = __views
-// include scripts array
-app.locals.scripts = [];
-// lazy include script
-app.locals.js = (path) => { app.locals.scripts.push(path) }
+app.locals.copyrightYear = () => new Date().getFullYear();
+app.locals.padZero = (num) => Math.floor(num).toString().padStart(2, '0');
+
+app.locals.__views = __dirname + '/views/'
+
 const server = app.listen(8080);

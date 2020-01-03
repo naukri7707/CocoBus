@@ -1,19 +1,22 @@
 <% if(userdata && userdata.level === 100) { %>
 <script>
-  const $serial = $('#serial');
-  const $img = $('#img');
-  const $from = $('#from');
-  const $to = $('#to');
-  const $through = $('#through');
-  const $startTime = $('#startTime');
-  const $endTime = $('#endTime');
+  const $_id = $('#_id');
+  const $type = $('#type');
+  const $cost = $('#cost');
+  const $from = $('#add-from');
+  const $to = $('#add-to');
+  const $through = $('#add-through');
+  const $startHour = $('#startHour');
+  const $startMinute = $('#startMinute');
+  const $endHour = $('#endHour');
+  const $endMinute = $('#endMinute');
   const $interval = $('#interval');
 
-  function remove(serial) {
+  function remove(id) {
     $.post(
       "/ticket/remove",
       {
-        serial: serial
+        _id: id
       },
       (res) => {
         if (res.code <= 0) {
@@ -27,17 +30,21 @@
       }
     );
   }
+
   function add() {
     $.post(
       "/ticket/add",
       {
-        serial: $serial.val(),
-        img: $img.val(),
+        _id: $_id.val(),
+        type: $type.val(),
+        cost: $cost.val(),
         from: $from.val(),
         to: $to.val(),
         through: $through.val(),
-        startTime: $startTime.val(),
-        endTime: $endTime.val(),
+        startHour: $startHour.val(),
+        startMinute: $startMinute.val(),
+        endHour: $endHour.val(),
+        endMinute: $endMinute.val(),
         interval: $interval.val()
       },
       (res) => {

@@ -1,0 +1,18 @@
+<% if(lock.dataSelector === undefined) { %>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="/js/jQueryCalendar-zh-TW.js"></script>
+<% lock.dataSelector = true %>
+<% } %>
+<input type="text" name="<%- id %>" id="<%- id %>" readonly>
+<script>
+  $("#<%- id %>").datepicker({
+    showAnim: "show",
+    showOn: "both",
+    buttonImage: "/img/calendar.png",
+    buttonImageOnly: true,
+    minDate: 0,
+    maxDate: 6,
+  });
+</script>

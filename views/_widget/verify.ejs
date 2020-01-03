@@ -1,0 +1,5 @@
+<%#- partial('_widget/verify') %>
+<% js('verify') %>
+<input id="verifyAns" type="text"
+  placeholder="<%- session.verify.lhs %> <%- session.verify.sym %> <%- session.verify.rhs %>" />
+<i class="refresh fas fa-sync click-icon" onclick="refresh()"></i>

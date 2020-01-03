@@ -24,7 +24,7 @@ router.get('/station', (req, res) => {
 
 router.get('/feedback', (req, res) => {
     req.session.verify = verify.makeVerify();
-    res.render('layout', { main: 'contact/feedback', verify: req.session.verify });
+    res.render('layout', { main: 'contact/feedback' });
 });
 
 router.get('/jobs', (req, res) => {

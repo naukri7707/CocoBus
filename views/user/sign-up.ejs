@@ -28,8 +28,7 @@
       </div>
       <div class="field">
         <div>驗證碼</div>
-        <input id="verifyAns" type="text" placeholder="<%- verify.lhs %> <%- verify.sym %> <%- verify.rhs %>" />
-        <i class="refresh fas fa-sync" onclick="refresh()"></i></br></br>
+        <%- partial('_widget/verify') %></br></br>
       </div>
       <button class=" btn btn-primary" onclick="signup()">註冊</button>
     </div>
