@@ -1,12 +1,11 @@
 <%
-
 /**
  * @param {String} title       標題
  * @param {String} img         圖片路徑
  * @param {Array}  tags        標籤          
  * @param {Array}  description 內文，每項以 <p> 為容器
  */
-const busdata = [
+const busData = [
   {
     title: '顆顆1號',
     img: '/img/Deluxe-Motor-01.jpg',
@@ -45,26 +44,74 @@ const busdata = [
 
 <div class="row">
   <div class="col-12">
-    <% for(const [i, bus] of busdata.entries()) { %>
-    <% if (i > 0) { %>
-    <hr>
-    <% } %>
-    <div id="<%- bus.id %>">
-      <h1><%- bus.title %></h1>
-      <img src="<%- bus.img %>">
-      <ul>
-        <% for(const tag of bus.tags) { %>
-        <li>
-          <%- tag %>
-        </li>
+    <div class="top">
+      <h2>
+        <% for(const bus of busData) { %>
+        <a href="#<%- bus.title %>" class="topLink"><%- bus.title %></a>
         <% } %>
-      </ul>
-      <% for(const paragraph of bus.description) { %>
-      <p style="text-indent:2em;">
-        <%- paragraph %>
-      </p>
-      <% } %>
+      </h2>
     </div>
-    <% } %>
+    <div class="center">
+      <p>
+        <h1 id="bus1">顆顆一號　長途型車輛<a href="#" class="goTop"><img src="../public/img/gotop.png" width="30" height="31"
+              alt="" /></a></h1>
+        <img src="../public/img/page01.jpg" width="588" height="210" alt="" /><br>
+        <h2>車輛簡介</h2>
+        <p>安全！舒適！快速！為您的旅途提供最好的服務！</p>
+        <p>&nbsp;</p>
+        <p>顆顆客運以安全系數最高級的歐洲SCANIA車種建立車隊，為業界第一。</p>
+        <p>更不吝
+          於以高成本塑造良好的環境衛生與駕駛道德觀念 ，2020全新車隊，獨立三排沙
+          發座椅，車輛為歐洲瑞典Scania K400 五期環保車，在讓您平安回家的同時，也
+          為地球環保盡了一份心力！</p>
+        <p>椅距加寬、三排椅加大，給您獨立的乘車空間。講求人體工學，可</p>
+        <p>依個人需求調
+          整椅背和腳拖的角度，提供兩段式角度調整：兩個大銀色按鈕，左邊是椅背、
+          右邊是腿托，手工訂製防滑座椅，打造舒適的乘車體驗。 </p>
+
+        <h2>車內配備</h2>
+        <ul>
+          <li>USB充電座</li>
+          <li>影音設備</li>
+          <li>免費WIFI</li>
+          <li>舒適三排座椅</li>
+          <li>安全設備齊全</li>
+        </ul>
+        <p></p>
+
+
+      </p><br>
+      <hr>
+      <p><br>
+        <h1 id="bus2">顆顆二號　短途型車輛<a href="#" class="goTop"><img src="../public/img/gotop.png" width="30" height="31"
+              alt="" /></a></h1>
+        <img src="../public/img/page012.jpg" width="588" height="210" alt="" /><br>
+        <h2>車輛簡介</h2>
+        <p>安全！舒適！快速！為您的旅途提供最好的服務！</p>
+        <p>&nbsp;</p>
+        <p>顆顆客運以安全系數最高級的歐洲SCANIA車種建立車隊，為業界第一。</p>
+        <p>更不吝
+          於以高成本塑造良好的環境衛生與駕駛道德觀念 ，2020全新車隊，獨立三排沙
+          發座椅，車輛為歐洲瑞典Scania K400 五期環保車，在讓您平安回家的同時，也
+          為地球環保盡了一份心力！</p>
+        <p>椅距加寬、三排椅加大，給您獨立的乘車空間。講求人體工學，可</p>
+        <p>依個人需求調
+          整椅背和腳拖的角度，提供兩段式角度調整：兩個大銀色按鈕，左邊是椅背、
+          右邊是腿托，手工訂製防滑座椅，打造舒適的乘車體驗。 </p>
+
+        <h2>車內配備</h2>
+        <ul>
+          <li>USB充電座</li>
+          <li>影音設備</li>
+          <li>免費WIFI</li>
+          <li>舒適三排座椅</li>
+          <li>安全設備齊全</li>
+        </ul>
+        <p></p>
+
+
+      </p>
+    </div>
+    <div class="bottom"></div>
   </div>
 </div>

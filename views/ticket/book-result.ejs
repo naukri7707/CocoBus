@@ -1,6 +1,11 @@
+<% js() %>
+<%- js("alert-back", {judge:search.from === undefined, message: "起站不可為空"}); %>
+<%- js("alert-back", {judge:search.to === undefined, message: "迄站不可為空"}); %>
+<%- js("alert-back", {judge:search.date === "", message: "日期不可為空"}); %>
+
 <div id="results">
   <% if (typeof results == 'object' && results) { %>
-  <% if(results.length === 0) { %>
+  <% if(results[0]._id === undefined) { %>
   <h1>沒有符合條件的車輛</h1>
   <% } else { %>
   <% for(const [i,item] of results.entries()) { %>

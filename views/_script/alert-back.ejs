@@ -1,0 +1,9 @@
+<%# 跳訊息後返回上一頁 %>
+<%- global.alertBack %>
+<% if(judge && global.alertBack === undefined) { %>
+<script>
+  alert("<%- message %>");
+  window.history.go(-1);
+</script>
+<% global.alertBack = true; %>
+<% } %>

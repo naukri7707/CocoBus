@@ -4,7 +4,7 @@
   迄站 <%- partial('_widget/station-selector', {id: 'to', selected: search.to}); %><br><br>
   乘車日期 <%- partial('_widget/date-selector', {id: 'date'}); %>
   預計乘車時間<%- partial('_widget/time-selector', {id: 'time'}); %>
-  <input type="submit" class="btn btn-primary" value="查詢"></input>
+  <input type="submit" class="btn btn-primary" onclick="book()"></input>
 </form>
 <% if (typeof results == 'object' && results) { %>
 <div id="results">

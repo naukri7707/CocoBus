@@ -8,9 +8,12 @@ partial = (path, data) => {
   return include(`${__views}/${path}`, data); 
 };
 
+// 全域物件，模板間傳遞資料的接口
+global = {}
+
 // 懶載入 HTML 內嵌 JS
 scripts = [];
-js = (path) => { scripts.push(path) }
+js = (path, data) => { scripts.push({path:path, data:data}); }
 
 // 鎖定 partial ejs 引入區域避免多次引入
 lock = {};
@@ -35,7 +38,7 @@ lock = {};
   <%- partial('_partial/foot'); %>
   <%- partial('_script/layout'); %>
   <% for (const script of scripts) { %>
-  <%- partial('_script/' + script); %>
+  <%- partial('_script/' + script.path, script.data); %>
   <% } %>
 </body>
 

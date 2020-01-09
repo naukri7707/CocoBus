@@ -10,12 +10,6 @@ router.get('/', (req, res) => {
     res.render('layout', { main: 'ticket' });
 });
 
-var a = Date("2019-03-08");
-var dateStart = new Date();
-var dateEnd = new Date("2020/01/03");
-var difValue = (dateEnd - dateStart) / (1000 * 60 * 60 * 24);
-var b = a;
-
 db.find({}, (err, doc) => {
     if (err) {
         console.log("update ticket failed");
@@ -28,17 +22,11 @@ db.find({}, (err, doc) => {
 
 router.get('/book', (req, res) => {
     res.render('layout', { main: 'ticket/book', search: {} });
-})
+});
 
 router.post('/book', (req, res) => {
     const body = req.body;
-    if (body.from === undefined) {
-        res.json({ code: -1, msg: "起站不可為空" });
-    } else if (body.to === undefined) {
-        res.json({ code: -1, msg: "迄站不可為空" });
-    } else if (body.date === "") {
-        res.json({ code: -1, msg: "日期不可為空" });
-    }
+
     db.find({
         $where: function () {
             for (const day of this.ticket) {
@@ -87,11 +75,11 @@ router.post('/book', (req, res) => {
                 }
             });
             results.sort();
-            res.render('layout', { main: 'ticket/book-result', results: results });
+            res.render('layout', { main: 'ticket/book-result', results: results, search: body });
         } else {
-            res.render('layout', { main: 'ticket/book', search: body });
+            res.render('layout', { main: 'ticket/book-result', results: [], search: body });
         }
-    })
+    });
 });
 
 router.get('/search', (req, res) => {
@@ -182,11 +170,13 @@ function updateTicket(bus) {
     let date = new Date();
     const today = date.today();
     // 刪除昨天以前的票
-    for (let i = 0; i < bus.ticket.length; i++) {
-        let ticket = bus.ticket[i];
+    while (bus.ticket.length > 0) {
+        let ticket = bus.ticket[0];
         if (ticket.date < today) {
-            bus.ticket.splice(0, t);
+            bus.ticket.splice(0, 1);
             isDelete = true;
+        } else {
+            break;
         }
     }
     if (isDelete || bus.ticket.length === 0) {
