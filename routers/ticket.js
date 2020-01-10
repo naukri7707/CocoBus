@@ -51,7 +51,7 @@ router.post('/book', (req, res) => {
                         let dis = Math.abs(taretTime - dayDate - it.time)
                         if (it.remain > 0 && dis < distance[2]) {
                             let obj = Object.assign({}, bus);
-                            obj.day = day.date
+                            obj.date = day.date
                             obj.time = it.time
                             obj.remain = it.remain
                             if (dis < distance[0]) {
@@ -75,11 +75,46 @@ router.post('/book', (req, res) => {
                 }
             });
             results.sort();
+            req.session.book = results;
             res.render('layout', { main: 'ticket/book-result', results: results, search: body });
         } else {
-            res.render('layout', { main: 'ticket/book-result', results: [], search: body });
+            res.render('layout', { main: 'ticket/book-result', results: [{}], search: body });
         }
     });
+});
+
+router.post('/buy', (req, res) => {
+    const body = req.body;
+    if (req.session.book == undefined) {
+        res.json({ code: -1, msg: "您的訂票資訊已過期，請重試" })
+    } else {
+        const target = req.session.book[parseInt(body.target, 10)]
+        db.findOne({ _id: target._id }, (err, doc) => {
+            if (doc) {
+                doc.ticket.forEach(day => {
+                    if (day.date !== target.date) return;
+                    day.run.forEach(run => {
+                        if (run.time === target.time) {
+                            if (run.remain > 0) {
+                                run.remain--;
+                                db.update({ _id: target._id }, { $set: { ticket: doc.ticket } }, (err) => {
+                                    if (err) {
+                                        res.json({ code: 1, msg: "奇怪的錯誤!" });
+                                    } else {
+                                        res.json({ code: 0, msg: "訂票成功!" });
+                                    }
+                                });
+                            } else {
+                                res.json({ code: -1, msg: "票賣完拉!" });
+                            }
+                        }
+                    });
+                });
+            } else {
+                res.json({ code: -1, msg: "找不到這天的票!" });
+            }
+        });
+    }
 });
 
 router.get('/search', (req, res) => {

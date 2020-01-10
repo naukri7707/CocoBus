@@ -8,6 +8,9 @@ body {
   font-family: Microsoft JhengHei;
   color: #4f3224;
   background-color: var(--bg-color);
+  background-image: url("/img/bg.jpg");
+  background-repeat: repeat-y;
+  background-size: contain;
 }
 
 #main {
@@ -161,53 +164,39 @@ footer a:hover {
   background-color: black;
 }
 
-/* .all {
-  width: 1920px;
-  margin: 0;
-  background-image: url("/img/bg01.jpg");
-  background-repeat: repeat-y;
-}
-.min {
-  width: 885px;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-} */
-
-.top {
-  width: 885px;
-  height: 162px;
-  background-image: url("/img/main01.jpg");
-  background-repeat: no-repeat;
+.field {
+  font-size: 1em;
+  margin-bottom: 0.8em;
 }
 
-.topLink {
-  position: relative;
-  color: #4f3224;
-  left: 250px;
-  top: 120px;
+.field > div {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.btn {
+  background: #4f3224;
+  color: white;
+  border-radius: 18px;
+  font-size: 1.3em;
   text-decoration-line: none;
-  padding-left: 10px;
+  margin: 0.5em 0.2em 0;
+  padding: 5px 10px;
 }
 
-.center {
-  background-image: url("/img/main02.jpg");
-  background-repeat: repeat-y;
-  padding-top: 50px;
-  padding-left: 130px;
-  padding-right: 130px;
-  padding-bottom: 3px;
+hr {
+  border-width: 0;
+  height: 1.5px;
+  background-image: linear-gradient(
+    90deg,
+    #ffb74c 0%,
+    #a3412c 25%,
+    #4f3224 50%,
+    #a3412c 75%,
+    #ffb74c 100%
+  );
 }
-.bottom {
-  width: 885px;
-  height: 107px;
-  background-image: url("/img/main03.jpg");
-  background-repeat: no-repeat;
-}
-ul {
-  list-style: circle;
-  margin-left: -18px;
-}
+
 .page013li {
   list-style: square;
 }
@@ -226,13 +215,23 @@ hr {
 .page031tbale {
   width: 588px;
   height: 588px;
-  border-radius: 1%;
-  border: 5px dashed #4f3224;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   text-align: center;
   line-height: 100px;
+  border-radius: 1%;
+  border-width: 5px;
+  border-style: dashed;
+  border-color: rgb(79, 50, 36);
+  border-image: initial;
   overflow: hidden;
 }
+table {
+  display: table;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border-color: grey;
+}
+
 .page031tbale tr td {
   width: 190px;
   height: 196px;
@@ -266,8 +265,4 @@ hr {
   padding-top: 196px;
   width: 196px;
   height: 196px;
-}
-
-h2 {
-  margin: 0px;
 }

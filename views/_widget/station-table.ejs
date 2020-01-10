@@ -1,0 +1,23 @@
+<h2><%- title %></h2>
+<table class="page031tbale">
+  <% for(let i = 0; i < stations.length; i += 3) { %>
+  <tr>
+    <% for(let j = i; j < 3 && j < stations.length; j++) { %>
+    <% let station = stations[j]; %>
+    <td>
+      <p>
+        <a>
+          <span>
+            stations.cellphone<br>
+            stations.address[0]<br>
+            stations.address[1]
+          </span>
+          stations.name<br>
+          <img src="../img/place.png" width="50" height="75" alt="" />
+        </a>
+      </p>
+    </td>
+    <% } %>
+  </tr>
+  <% } %>
+</table>

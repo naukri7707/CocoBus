@@ -1,43 +1,272 @@
-<%
-const stations = {
-  head: [
-  '車站名稱','地址','電話'
-  ],
-  body: [
-    ['基隆站','200 基隆市仁愛區港西街3號','02-24222624'],
-    ['臺北轉運站','103 台北市大同區市民大道一段209號','02-25583060'],
-    ['臺北車站(國光)','100 台北市中正區市民大道一段168號','02-23617965'],
-    ['臺北車站(北一門)','(台北車站北一門外)','0988-579-829'],
-    ['市府轉運站','110 台北市信義區忠孝東路五段6號','無'],
-    ['圓山轉運站','104 台北市中山區玉門街9號對面','0988-579-826'],
-    ['南港轉運站','115 台北市南港區忠孝東路7段359號','02-27837415'],
-    ['捷運南港展覽館站','115 台北市南港區經貿二路1號(163櫃)','02-27839533'],
-    ['松山機場','105 台北市松山區敦化北路340之9號','無'],
-    ['重陽站','241 新北市三重區重陽路四段53號','02-89881160'],
-  ]
-}
-%>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
 
 <div class="row">
   <div class="col-12">
-    <div id="station">
-      <table>
-        <thead>
-          <% for(const head of stations.head) { %>
-          <th><%- head %></th>
-          <% } %>
-        </thead>
-        <% for(const body of stations.body) { %>
-        <tbody>
-          <tr>
-            <% for(const item of body) { %>
-            <td><%- item %></td>
-            <% } %>
-          </tr>
-        </tbody>
-        <% } %>
-        </tfoot>
-      </table>
-    </div>
+    <h1 id="stop1">北部站點 <a href="#" class="goTop"><img src="../public/img/gotop.png" width="30" height="31"
+          alt="" /></a>
+    </h1>
+    <table class="page031tbale">
+      <tr>
+        <td>
+          <p><a><span>02-24222624<br>
+                基隆市仁愛區<br>
+                港西街3號</span>基隆站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>02-25583060<br>
+                台北市大同區<br>
+                市民大道一段209號</span>臺北轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>02-23617965<br>
+                台北市中正區<br>
+                市民大道一段168號</span>臺北車站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>無<br>
+                台北市信義區<br>
+                忠孝東路五段6號</span>市府轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>0988-579-826<br>
+                台北市中山區<br>
+                玉門街9號對面</span>圓山轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>02-27837415<br>
+                台北市南港區<br>
+                忠孝東路7段359號</span>南港轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>無<br>
+                台北市松山區<br>
+                敦化北路340之9號</span>松山機場站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>02-89881160<br>
+                新北市三重區<br>
+                重陽路四段53號</span>重陽站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>無<br>
+                新北市板橋區<br>
+                新站路與縣民大道口</span>板橋客運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>0925-981-716<br>
+                桃園市中壢區<br>
+                內定二街998號</span>中壢轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>03-5249470<br>
+                新竹市東區<br>
+                東南街1巷6號</span>新竹轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+
+    <h1 id="stop2">中部站點<a href="#" class="goTop"><img src="../public/img/gotop.png" width="30" height="31" alt="" /></a>
+    </h1>
+    <table class="page031tbale">
+      <tr>
+        <td>
+          <p><a><span>03-7260825<br>
+                苗栗縣苗栗市<br>
+                上苗里為公路8號</span>苗栗轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-22250910<br>
+                臺中市東區<br>
+                新民街88號</span>臺中轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-22546280<br>
+                台中市西屯區<br>
+                朝富路8號</span>朝馬轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <p><a><span>04-22959177<br>
+                台中市北屯區<br>
+                中清路2段366號</span>水湳轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-7230463<br>
+                彰化縣彰化市<br>
+                中正路1段531號</span>彰化轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-8320318<br>
+                彰化縣員林鎮<br>
+                靜修路52-1號</span>員林轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>04-0663000<br>
+                彰化縣田中鎮<br>
+                站區路二段99號</span>高鐵彰化站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-92222639<br>
+                南投縣南投市<br>
+                三和三路21號</span>南投轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-9299-6147<br>
+                南投縣埔里鎮<br>
+                中正路338號</span>埔里轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>04-92855668<br>
+                南投縣魚池鄉<br>
+                中山路163號</span>南投日月潭站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>05-5862055<br>
+                雲林縣西螺鎮<br>
+                中山路70號</span>西螺轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>05-5862055<br>
+                雲林縣虎尾鎮<br>
+                站前東路301號</span>高鐵雲林站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+      </tr>
+    </table>
+    <br>
+    <hr>
+    <br>
+
+    <h1 id="stop3">南部站點<a href="#" class="goTop"><img src="../public/img/gotop.png" width="30" height="31" alt="" /></a>
+    </h1>
+    <table class="page031tbale">
+      <tr>
+        <td>
+          <p><a><span>05-2333272<br>
+                嘉義縣嘉義市西區<br>
+                中興路1號</span>嘉義轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>06-2281552<br>
+                臺南市北區<br>
+                公園路291號</span>臺南轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>06-2427615<br>
+                臺南市永康區<br>
+                中正南路764號</span>臺南鹽行站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+
+      <tr>
+        <td>
+          <p><a><span>04-22959177<br>
+                臺南市關廟區<br>
+                中正路560號</span>關廟轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>04-7230463<br>
+                高雄市三民區<br>
+                建國二路306號</span>高雄轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>07-7462141<br>
+                高雄市鳳山區<br>
+                鳳仁路92號2F</span>鳳山轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>07-6612053<br>
+                高雄市旗山區<br>
+                大同街23號</span>旗山轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>07-2299825轉719<br>
+                高雄市燕巢區<br>
+                安招路830號</span>岡山轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>07-2299825轉715<br>
+                高雄市小港區<br>
+                立群路21號</span>小港轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+
+      </tr>
+      <tr>
+        <td>
+          <p><a><span>08-7338574<br>
+                屏東縣屏東市<br>
+                光復路45號</span>屏東轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>08-7882206<br>
+                屏東縣潮州鎮<br>
+                中山路178之2號</span>潮州轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+        <td>
+          <p><a><span>無<br>
+                屏東縣內埔鄉<br>
+                水門村(未完工)</span>水門轉運站<br>
+              <img src="/img/place.png" width="50" height="75" alt="" /></a></p>
+        </td>
+      </tr>
+    </table>
+
+
   </div>
 </div>
