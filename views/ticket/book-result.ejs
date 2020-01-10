@@ -10,7 +10,7 @@
   <% } else { %>
   <% for(const [i,item] of results.entries()) { %>
   <%- i > 0 ? '<hr>' : '' %>
-  <h1><%- item._id %></h1><%- item.type %>
+  <h1><%- item._id %> <%- item.type %></h1>
   <h3><%- item.from %> 到 <%- item.to %> 經 <%- item.through %></h3>
   <h5><%- item.date %>，<%- Math.floor(item.time / 60 ) %>點<%- item.time % 60 %>分</h5>
   <h3>票價：<%- item.cost %>，剩餘<%- item.remain %>張</h3>

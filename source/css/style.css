@@ -266,3 +266,14 @@ table {
   width: 196px;
   height: 196px;
 }
+
+.welcome {
+  font-size: 6em;
+  text-align: center;
+  font-weight: bold;
+}
+
+.welcome-eng {
+  font-size: 3em;
+  text-align: center;
+}
